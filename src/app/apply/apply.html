@@ -1,0 +1,210 @@
+<div class="container" ng-controller="ApplyController as apply">
+	<div class="row">
+		<div class="box">
+			<div class="col-lg-12">
+				<div style="position: absolute;" class="pull-right alert alert-warning" ng-show="apply.applicationStatus('no')">Create</div>
+				<div style="position: absolute;" class="pull-right alert alert-info" ng-show="apply.applicationStatus('pending')">PENDING</div>
+				<div style="position: absolute;" class="pull-right alert alert-success" ng-show="apply.applicationStatus('active')">ACTIVE</div>
+				<div class="application-step" ng-show="apply.getStep(0)">
+					<h2 class="intro-text text-center">
+						<strong>Health Card</strong> Application
+					</h2>
+					<hr>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, vitae, distinctio, possimus repudiandae cupiditate ipsum excepturi dicta neque eaque voluptates tempora veniam esse earum sapiente optio deleniti consequuntur eos voluptatem.</p>
+
+					<form role="form">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="row">
+									<h2 class="intro-text text-center">
+										<strong>Info</strong>
+									</h2>
+									<hr>
+
+									<div class="form-group col-lg-4">
+										<label>First Name</label>
+										<input type="text" class="form-control" ng-model="apply.hc_firstname">
+									</div>
+									<div class="form-group col-lg-4">
+										<label>Middle</label>
+										<input type="text" class="form-control" ng-model="apply.hc_middlename">
+									</div>
+									<div class="form-group col-lg-4">
+										<label>Last Name</label>
+										<input type="text" class="form-control" ng-model="apply.hc_lastname">
+									</div>
+									<div class="form-group col-lg-3">
+										<label>Age</label>
+										<input type="text" class="form-control" ng-model="apply.hc_age">
+									</div>
+									<div class="form-group col-lg-3">
+										<label>Gender</label>
+										<select class="form-control" ng-model="apply.hc_sex">
+											<option value="male">Male</option>
+											<option value="female">Female</option>
+										</select>
+									</div>
+									<div class="form-group col-lg-3">
+										<label>Civil Status</label>
+										<select class="form-control" ng-model="apply.hc_civilstatus">
+											<option value="single">Single</option>
+											<option value="married">Married</option>
+											<option value="widowed">Widowed</option>
+											<option value="separated">Separated</option>
+											<option value="divorced">Divorced</option>
+										</select>
+									</div>
+									<div class="form-group col-lg-3">
+										<label>Nationality</label>
+										<input type="text" class="form-control" ng-model="apply.hc_nationality">
+									</div>
+
+									<div class="form-group col-lg-6">
+										<label>Cedula</label>
+										<input type="text" class="form-control" ng-model="apply.hc_cedula">
+									</div>
+									<div class="form-group col-lg-6">
+										<label>Cedula Issued Date</label>
+										<input type="text" class="form-control" ng-model="apply.hc_cedula_date_issued">
+									</div>
+									<div class="form-group col-lg-6">
+										<label>OR Number</label>
+										<input type="text" class="form-control" ng-model="apply.hc_OR_fee_number">
+									</div>
+									<div class="form-group col-lg-6">
+										<label>OR Number Date Issued</label>
+										<input type="text" class="form-control" ng-model="apply.hc_OR_fee_number_date_issued">
+									</div>
+								</div>
+								
+								<hr>
+								<div class="row">
+									<div class="form-group col-lg-12">
+										<label>Business Employment</label>
+										<input type="text" class="form-control" ng-model="apply.hc_business_employment">
+									</div>
+									<div class="form-group col-lg-6">
+										<label>Job Category</label>
+										<select class="form-control" ng-model="apply.hc_job_category">
+											<option value="Non-Food">Non-Food</option>
+											<option value="Food">Food</option>
+											<option value="Pink">Pink</option>
+										</select>
+									</div>
+									<div class="form-group col-lg-6">
+										<label>Job Position</label>
+										<input type="text" class="form-control" ng-model="apply.hc_position">
+									</div>
+									<div class="form-group col-lg-12">
+										<label>Ethnic Group</label>
+										<input type="text" class="form-control" ng-model="apply.hc_ethnic_group">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-6">
+								<div class="row">
+									<h2 class="intro-text text-center">
+										<strong>Incase</strong>
+										of
+										<strong>Emergency</strong>
+									</h2>
+									<hr>
+
+									<div class="form-group col-lg-12">
+										<label>Full Name</label>
+										<input type="text" class="form-control" ng-model="apply.hc_icoe_name">
+									</div>
+									<div class="form-group col-lg-12">
+										<label>Relation</label>
+										<input type="text" class="form-control" ng-model="apply.hc_icoe_relation">
+									</div>
+									<div class="form-group col-lg-12">
+										<label>Address</label>
+										<textarea rows="4" class="form-control" ng-model="apply.hc_icoe_address"></textarea>
+									</div>
+									<div class="form-group col-lg-12">
+										<label>Contact Number</label>
+										<input type="text" class="form-control" ng-model="apply.hc_icoe_contact_number">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="application-step" ng-show="apply.getStep(1)">
+					<h2 class="intro-text text-center">
+						<strong>Health Card</strong> Requirements
+					</h2>
+					<hr>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, vitae, distinctio, possimus repudiandae cupiditate ipsum excepturi dicta neque eaque voluptates tempora veniam esse earum sapiente optio deleniti consequuntur eos voluptatem.</p>
+
+					<div class="requirements-container well well-small">
+						<ul>
+							<li>a) 3 copies of recent 2x2 picture (colored or black and white);</li>
+							<li>b) Chest X-ray result with big film;</li>
+							<li>c) Residence certificate;</li>
+							<li>d) Birth Certificate (for 18-25 years old)</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="application-step" ng-show="apply.getStep(2) && !apply.applicationStatus('no')">
+					<h2 class="intro-text text-center">
+						<strong>Health Card</strong> Submit
+					</h2>
+					<hr>
+					<div class="row">
+						<div class="form-group col-lg-8 col-sm-offset-2">
+							<p class="text-center">Show the code provided trough SMS to the office.</p>
+						</div>
+					</div>
+				</div>
+				<div class="application-step" ng-show="apply.getStep(2) && apply.applicationStatus('no')">
+					<h2 class="intro-text text-center">
+						<strong>Health Card</strong> Submit
+					</h2>
+					<hr>
+					<div class="row">
+						<div class="form-group col-lg-8 col-sm-offset-2">
+							<p>Enter your mobile number to reciece a verification code.</p>
+							<label>Phone Number</label>
+							<input type="text" class="form-control" ng-model="apply.hc_contact">
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div ng-show="apply.getStep(0) && apply.isMessageOn()"></div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="col-lg-12">
+							<div class="row">
+								<div class="form-group col-lg-12 text-center">
+									<div ng-show="apply.applicationStatus('no')">
+										<p ng-show="!apply.validFields()"><b>Complete the fields to proceed</b></p>
+										<button type="button" class="btn btn-default btn-primary" ng-click="apply.prev()" ng-show="!apply.getStep(0)">Prev</button>
+										<button type="button" class="btn btn-default btn-primary" ng-click="apply.next()" ng-show="apply.validFields() && !apply.getStep(2)">Next</button>
+										<button type="button" class="btn btn-default btn-success" ng-click="apply.submit()" ng-show="apply.getStep(2) && apply.applicationStatus('no')">Sumbit Application</button>
+									</div>
+
+									<div ng-show ="!apply.applicationStatus('no')">
+										<div ng-show="!apply.validFields()">
+											<p><b>Fields Should not be empty</b></p>
+											<hr>
+										</div>
+										<button type="button" class="btn btn-default btn-primary" ng-click="apply.prev()" ng-show="!apply.getStep(0)">Prev</button>
+										<button type="button" class="btn btn-default btn-success" ng-click="apply.update()" ng-show="apply.getStep(0) && apply.validFields()">Update</button>
+										<button type="button" class="btn btn-default btn-primary" ng-click="apply.next()" ng-show="!apply.getStep(2)">Next</button>
+										<button type="button" class="btn btn-default btn-success" ng-click="apply.submit()" ng-show="apply.getStep(2) && apply.applicationStatus('no')">Sumbit Application</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- /.container -->

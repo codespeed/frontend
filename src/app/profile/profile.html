@@ -1,0 +1,124 @@
+<div class="container">
+	<div class="row">
+		<div class="box">
+			<div class="col-lg-4">
+				<h2 class="intro-text text-center">Basic
+					<strong>Information</strong>
+				</h2>
+
+				<form role="form">
+					<div class="row">
+						<div class="form-group col-lg-12 text-center">
+							<label><img src="assets/img/profile.png" alt=""></label>
+							<p><a ui-sref="profile-picture">Edit Profile Picture</a></p>
+						</div>
+						<div class="form-group col-lg-12">
+							<label>First Name</label>
+							<input type="text" class="form-control" ng-model="profile.firstname">
+						</div>
+						<div class="form-group col-lg-12">
+							<label>Last Name</label>
+							<input type="text" class="form-control" ng-model="profile.lastname">
+						</div>
+						<div class="form-group col-lg-12">
+							<label>Email</label>
+							<input type="text" class="form-control" ng-model="profile.email">
+						</div>
+						<div class="form-group col-lg-12">
+							<label>Nickname</label>
+							<input type="text" class="form-control" ng-model="profile.nickname">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-8">
+				<div class="row">
+					<div class="col-sm-12">
+						<h2 class="intro-text text-center">More
+							<strong>Info</strong>
+						</h2>
+						<form role="form">
+							<div class="row">
+								<div class="form-group col-lg-4">
+									<label>Gender</label>
+									<select class="form-control" ng-model="profile.gender">
+										<option value="male">Male</option>
+										<option value="female">Female</option>
+									</select>
+								</div>
+								<div class="form-group col-lg-4">
+									<label>Date of Birth</label>
+									<input type="text" class="form-control" ng-model="profile.birthday">
+								</div>
+								<div class="form-group col-lg-4">
+									<label>Civil Status</label>
+									<select class="form-control" ng-model="profile.status">
+										<option value="single">Single</option>
+										<option value="married">Married</option>
+										<option value="widowed">Widowed</option>
+										<option value="separated">Separated</option>
+										<option value="divorced">Divorced</option>
+									</select>
+								</div>
+								<div class="form-group col-lg-4">
+									<label>Nationality</label>
+									<input type="text" class="form-control" ng-model="profile.nationality">
+								</div>
+								<div class="form-group col-lg-8">
+									<label>Contact Number</label>
+									<input type="text" class="form-control" ng-model="profile.contact">
+								</div>
+								<div class="form-group col-lg-12">
+									<label>Address</label>
+									<textarea rows="4" class="form-control" ng-model="profile.address"></textarea>
+								</div>
+								<div class="form-group col-lg-12">
+									<label>Note</label>
+									<textarea class="form-control" rows="6" ng-model="profile.note"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-12">
+						<h2 class="intro-text text-center">
+							<strong>Incase</strong>
+							of
+							<strong>Emergency</strong>
+						</h2>
+						<hr>
+
+						<div class="form-group col-lg-12">
+							<label>Full Name</label>
+							<input type="text" class="form-control" ng-model="profile.ioe_name">
+						</div>
+						<div class="form-group col-lg-12">
+							<label>Relation</label>
+							<input type="text" class="form-control" ng-model="profile.ioe_relation">
+						</div>
+						<div class="form-group col-lg-12">
+							<label>Address</label>
+							<textarea rows="4" class="form-control" ng-model="profile.ioe_address"></textarea>
+						</div>
+						<div class="form-group col-lg-12">
+							<label>Contact Number</label>
+							<input type="text" class="form-control" ng-model="profile.ioe_contact">
+						</div>
+						<div class="form-group col-lg-12">
+							<label>Establishment</label>
+							<input type="text" id="ioe_establishment" name="ioe_establishment" class="form-control" ng-model="profile.ioe_establishment">
+						</div>
+					</div>
+
+					<div class="col-sm-12">
+						<div class="form-group col-lg-12">
+							<button class="btn btn-primary" ng-click="profile.updateProfile()">Update</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- /.container -->

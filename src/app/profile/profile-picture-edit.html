@@ -1,0 +1,58 @@
+<div class="container" ng-app="fileUpload" ng-controller="ProfileUploaderController as profile" ng-init="profile.profilePicture = 'assets/img/profile.png'">
+	<div class="box">
+		<div class="row">
+			<div class="form-group col-lg-12 text-center">
+				<label><img src="{{profile.profilePicture}}" alt=""></label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3 file-uploader-form" >
+				<form name="myForm" >
+					<fieldset>
+						<legend class="hide">Upload on form submit</legend>
+
+						<div class="row">
+							<div class="form-group col-lg-4">
+								<label>Select File:</label>
+								<input class="hide" type="text" name="userName" ng-model="profile.username" size="31" required>
+							</div>
+						</div>
+
+						<div class="other-field">
+							<i ng-show="myForm.userName.$error.required" class="hide">*required</i>
+							<i ng-show="myForm.file.$error.required">*required</i><br>
+							<i ng-show="myForm.file.$error.maxSize">File too large  {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+
+							<input type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+
+							<img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb hide">
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-12">
+								<button ng-disabled="!myForm.$valid" ng-click="profile.uploadPic(picFile)" class="btn btn-sm btn-success">Submit</button>
+								<button ng-click="picFile = null" ng-show="picFile" class="btn btn-sm btn-danger">Remove</button>
+							</div>
+						</div>
+
+						<br>
+						<div class="row">
+							<div class="col-sm-12">
+								<span class="progress" ng-show="picFile.progress >= 0">
+									<div style="width:{{picFile.progress}}%" 
+									ng-bind="picFile.progress + '%'"></div>
+								</span>
+								<span ng-show="picFile.result">Upload Successful</span>
+								<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+							</div>
+						</div>
+
+					</fieldset>
+					<br>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container -->
