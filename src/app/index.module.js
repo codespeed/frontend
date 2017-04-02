@@ -6,6 +6,7 @@ import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
 import { AuthController } from './auth/auth.controller';
 import { PageController } from './pages/page.controller';
+import { EventController } from './pages/event.controller';
 import { ProfileController } from './profile/profile.controller';
 import { ProfileUploaderController } from './profile/profile-uploader.controller';
 import { ApplyController } from './apply/apply.controller';
@@ -28,10 +29,17 @@ angular.module('project1', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
   .controller('MainController', MainController)
   .controller('AuthController', AuthController)
   .controller('PageController', PageController)
+  .controller('EventController', EventController)
   .controller('ProfileController', ProfileController)
   .controller('ApplyController', ApplyController)
   .controller('NavbarController', NavbarController)
   .controller('ProfileUploaderController', ProfileUploaderController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective)
-  .directive('compareTo', CompareToDirective);
+  .directive('compareTo', CompareToDirective)
+  .filter('renderHTMLCorrectly', function($sce){
+    return function(stringToParse)
+    {
+      return $sce.trustAsHtml(stringToParse);
+    }
+  });

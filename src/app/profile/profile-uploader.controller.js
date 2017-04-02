@@ -13,7 +13,7 @@ export class ProfileUploaderController {
 
 		this.uploadPic = function(file) {
 			file.upload = Upload.upload({
-				url: 'http://localhost:5000/api/profile-picture-upload',
+				url: API_URL+'/api/profile-picture-upload',
 				data: {username: vm.username, file: file}
 			}).then(function (response) {
 				$timeout(function () {
@@ -28,8 +28,8 @@ export class ProfileUploaderController {
 			});
 		}
 
-		this.$http.post('http://localhost:5000/api/profile-picture',{token:this.getToken}).then(function(result){
-			vm.profilePicture = "http://localhost:5000/api/profile-picture-img?src=" + result.data.profile_picture;
+		this.$http.post(API_URL+'/api/profile-picture',{token:this.getToken}).then(function(result){
+			vm.profilePicture = "http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/profile-picture-img?src=" + result.data.profile_picture;
 		});
 	}
 	getprofilePicture(){

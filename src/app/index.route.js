@@ -61,12 +61,37 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
 		controller: 'ApplyController',
 		controllerAs: 'apply'
 	})
+	.state('apply-resend', {
+		url: '/apply-resend',
+		templateUrl: 'app/apply/apply-resend.html',
+		controller: 'ApplyController',
+		controllerAs: 'apply'
+	})
 	.state('apply-updated', {
 		url: '/apply-updated',
 		templateUrl: 'app/apply/apply-updated.html',
 		controller: 'ApplyController',
 		controllerAs: 'apply'
+	})
+	.state('events', {
+		url: '/events',
+		templateUrl: 'app/pages/events.html',
+		controller: 'EventController',
+		controllerAs: 'event'
+	})
+	.state('event-selected', {
+		url: '/events/:slug',
+		templateUrl: 'app/pages/events-selected.html',
+		controller: 'EventController',
+		controllerAs: 'event'
 	});
+
+	/*$urlRouterProvider
+         .when("/events/:slug", {
+            templateUrl: 'app/pages/events-selected.html',
+            controller: "EventController",
+            controllerAs: 'event'
+        });*/
 
 	$urlRouterProvider.otherwise('/');
 }

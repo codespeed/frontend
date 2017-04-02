@@ -9,5 +9,6 @@ export class NavbarController{
 	logout(){
 		this.$auth.logout();
 		this.$location.path('/login');
+		window.location.reload();
 	}
 }

@@ -8,7 +8,7 @@ export class ApplyController {
 
 		this.Step1 = 0;
 		this.ApplicationStatus = "no";
-
+		//this.hc_job_category = "Non-Food";
 		this.getprofile();
 	}
 	getStep(stem_counter){
@@ -39,7 +39,7 @@ export class ApplyController {
 		this.hc_lastname = data.hc_lastname ? data.hc_lastname : data.lastname;
 		this.hc_firstname = data.hc_firstname ? data.hc_firstname : data.firstname;
 		this.hc_middlename = data.hc_middlename ? data.hc_middlename : "";
-		this.hc_age = data.hc_age ? data.hc_age : "";
+		//this.hc_age = data.hc_age ? data.hc_age : "";
 		this.hc_sex = data.hc_sex ? data.hc_sex : data.gender;
 		this.hc_civilstatus = data.hc_civilstatus ? data.hc_civilstatus : data.status;
 		this.hc_nationality = data.hc_nationality ? data.hc_nationality : data.nationality;
@@ -57,6 +57,7 @@ export class ApplyController {
 		this.hc_job_category = data.hc_job_category ? data.hc_job_category : "";
 		this.hc_position = data.hc_position ? data.hc_position : "";
 		this.hc_ethnic_group = data.hc_ethnic_group ? data.hc_ethnic_group : "";
+		this.verification_code = data.verification_code ? data.verification_code : "";
 	}
 	applicationStatus(status){
 		return this.ApplicationStatus == status;
@@ -75,7 +76,7 @@ export class ApplyController {
 			hc_lastname : this.properValue( this.hc_lastname ),
 			hc_firstname : this.properValue( this.hc_firstname ),
 			hc_middlename : this.properValue( this.hc_middlename ),
-			hc_age : this.properValue( this.hc_age ),
+			//hc_age : this.properValue( this.hc_age ),
 			hc_sex : this.properValue( this.hc_sex ),
 			hc_civilstatus : this.properValue( this.hc_civilstatus ),
 			hc_nationality : this.properValue( this.hc_nationality ),
@@ -91,7 +92,11 @@ export class ApplyController {
 			hc_business_employment : this.properValue( this.hc_business_employment ),
 			hc_job_category : this.properValue( this.hc_job_category ),
 			hc_position : this.properValue( this.hc_position ),
-			hc_ethnic_group : this.properValue( this.hc_ethnic_group )
+			hc_ethnic_group : this.properValue( this.hc_ethnic_group ),
+			d : "",
+			m : "",
+			y : "",
+			hid : ""
 		};
 
 		var validation = this.validateData(data);
@@ -117,7 +122,7 @@ export class ApplyController {
 			hc_lastname : this.properValue( this.hc_lastname ),
 			hc_firstname : this.properValue( this.hc_firstname ),
 			hc_middlename : this.properValue( this.hc_middlename ),
-			hc_age : this.properValue( this.hc_age ),
+			//hc_age : this.properValue( this.hc_age ),
 			hc_sex : this.properValue( this.hc_sex ),
 			hc_civilstatus : this.properValue( this.hc_civilstatus ),
 			hc_nationality : this.properValue( this.hc_nationality ),
@@ -161,7 +166,7 @@ export class ApplyController {
 		if (data['hc_lastname'] == "") { message = "Lastname is empty!"; }
 		if (data['hc_firstname'] == "") { message = "Firstname is empty!"; }
 		if (data['hc_middlename'] == "") { message = "Middle Name is empty!"; }
-		if (data['hc_age'] == "") { message = "Age is empty!"; }
+		//if (data['hc_age'] == "") { message = "Age is empty!"; }
 		if (data['hc_sex'] == "") { message = "Sex is empty!"; }
 		if (data['hc_civilstatus'] == "") { message = "Civil Status is empty!"; }
 		if (data['hc_nationality'] == "") { message = "Nationality is empty!"; }
@@ -187,7 +192,7 @@ export class ApplyController {
 			hc_lastname : this.properValue( this.hc_lastname ),
 			hc_firstname : this.properValue( this.hc_firstname ),
 			hc_middlename : this.properValue( this.hc_middlename ),
-			hc_age : this.properValue( this.hc_age ),
+			//hc_age : this.properValue( this.hc_age ),
 			hc_sex : this.properValue( this.hc_sex ),
 			hc_civilstatus : this.properValue( this.hc_civilstatus ),
 			hc_nationality : this.properValue( this.hc_nationality ),
@@ -202,7 +207,11 @@ export class ApplyController {
 			hc_business_employment : this.properValue( this.hc_business_employment ),
 			hc_job_category : this.properValue( this.hc_job_category ),
 			hc_position : this.properValue( this.hc_position ),
-			hc_ethnic_group : this.properValue( this.hc_ethnic_group )
+			hc_ethnic_group : this.properValue( this.hc_ethnic_group ), 
+			d : "",
+			m : "",
+			y : "",
+			hid : ""
 		};
 
 		return this.validateData(data)['valid'];
@@ -222,5 +231,30 @@ export class ApplyController {
 		}).error(function(err){
 			alert("Unable to Proceed. " + err);
 		});
+	}
+
+	resendCode(){
+		var cno = this.cno;
+		var verification_code = this.verification_code;
+		//var location = this.location;
+		
+		
+		if(cno == ""){
+			alert("Please enter Phone Number");
+		}else{
+			 if(cno.length  == 10){
+			 	var location = this.location;
+			 	$('#resend-code').modal("hide");
+			 	location.href = location.origin + "/#/apply-resend";
+			 	this.$http.post('http://localhost:5000/api/health-card-resend', {cno:cno, verification_code:verification_code}).success(function(){
+					
+				}).error(function(err){
+					alert("Unable to Proceed. " + err);
+				});
+
+			}else{
+				alert("Invalid Phone Number");
+			}
+		}
 	}
 }

@@ -44,7 +44,7 @@ export class PageController {
 		return typeof value != 'undefined' ? value : '';
 	}
 	testGenerator(){
-		this.username = "test";
+		/*this.username = "test";
 		this.password = "test";
 		this.password_confirm = "test";
 
@@ -56,15 +56,41 @@ export class PageController {
 		this.birthday = "test";
 		this.status = "single";
 		this.nationality = "test";
-		this.contact = "test";
+		this.contact = "1234";
 		this.address = "test";
 		this.note = "test";
 
 		this.ioe_name = "test";
 		this.ioe_relation = "test";
 		this.ioe_address = "test";
-		this.ioe_contact = "test";
-		this.ioe_establishment = "test";
+		this.ioe_contact = "1234";
+		this.ioe_establishment = "test";*/
+
+		this.username = "na";
+		this.password = "";
+		this.password_confirm = "";
+
+		this.firstname = "";
+		this.lastname = "";
+		this.email = "";
+		this.nickname = "";
+		this.gender = "male";
+		//this.birthday = "";
+		this.status = "single";
+		this.nationality = "";
+		this.contact = "";
+		this.address = "";
+		this.note = "";
+		this.month ="0";
+		this.day ="0";
+		this.year ="0";
+
+		this.ioe_name = "";
+		this.ioe_relation = "";
+		this.ioe_address = "";
+		this.ioe_contact = "";
+		this.ioe_establishment = "n/a";
+
 	}
 	submit(){
 		var data = {
@@ -77,7 +103,8 @@ export class PageController {
 			email : this.properValue( this.email ),
 			nickname : this.properValue( this.nickname ),
 			gender : this.properValue( this.gender ),
-			birthday : this.properValue( this.birthday ),
+			//birthday : this.properValue( this.birthday ),
+			birthday : this.month+"-"+this.day+"-"+this.year,
 			status : this.properValue( this.status ),
 			nationality : this.properValue( this.nationality ),
 			contact : this.properValue( this.contact ),
@@ -91,7 +118,8 @@ export class PageController {
 			ioe_establishment : this.properValue( this.ioe_establishment ),
 			type:"Online",
 			date_expired_text: "",
-            date_expired_number:""
+            date_expired_number:"",
+            d:"",
 		};
 
 		var validation = this.validateData(data);
@@ -113,9 +141,10 @@ export class PageController {
 		if (this.firstname == "") { message = "Firstname is empty!" }
 		if (this.lastname == "") { message = "Lastname is empty!" }
 		if (this.email == "") { message = "Middle Name is empty!" }
+		if (!this.isValidEmailAddress(this.email)) { message = "Invalid Email Address" }
 		if (this.nickname == "") { message = "Nick-name is empty!" }
 		if (this.gender == "") { message = "Gender is empty!" }
-		if (this.birthday == "") { message = "Birthday is empty!" }
+		//if (this.birthday == "") { message = "Birthday is empty!" }
 		if (this.status == "") { message = "Status is empty!" }
 		if (this.nationality == "") { message = "Nationality is empty!" }
 		if (this.contact == "") { message = "Contact is empty!" }
@@ -151,7 +180,7 @@ export class PageController {
 			email : this.properValue( this.email ),
 			nickname : this.properValue( this.nickname ),
 			gender : this.properValue( this.gender ),
-			birthday : this.properValue( this.birthday ),
+			//birthday : this.properValue( this.birthday ),
 			status : this.properValue( this.status ),
 			nationality : this.properValue( this.nationality ),
 			contact : this.properValue( this.contact ),
@@ -164,9 +193,15 @@ export class PageController {
 			ioe_establishment : this.properValue( this.ioe_establishment ),
 			type:"Online",
 			date_expired_text: "",
-            date_expired_number:""
+            date_expired_number:"",
+            d:"",
 		};
 
-		return this.validateData(data)['valid'];
+		return (this.validateData(data)['valid'])?false:true;
 	}
+	isValidEmailAddress(emailAddress){
+		   var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+              return pattern.test(emailAddress);
+	}
+	 
 }

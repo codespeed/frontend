@@ -5,6 +5,7 @@ export class AuthController{
 		this.$location = $location;
 		this.invalidAccount = false;
 	}
+
 	login(){
 		if (this.email == '') {
 			alert("Enter email address");
@@ -16,13 +17,16 @@ export class AuthController{
 		}
 
 		var vm = this;
-
+		$(".txt-email, .txt-password").val("");
 		this.$auth.login(this.login.user).then(function(token){
 			vm.$auth.setToken(token);
 			vm.redirectHomepage();
+		
 		}).catch(function(response){
+
 			vm.invalidAccount = true;
-			console.log(response);
+			//console.log(response);
+	
 		});
 	}
 	resetAccountValidation(){

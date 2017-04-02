@@ -8,17 +8,17 @@
 
 				<form role="form">
 					<div class="row">
-						<div class="form-group col-lg-12 text-center">
+						<div class="form-group col-lg-12 text-center" style="display:none;">
 							<label><img src="assets/img/profile.png" alt=""></label>
 							<p><a ui-sref="profile-picture">Edit Profile Picture</a></p>
 						</div>
 						<div class="form-group col-lg-12">
 							<label>First Name</label>
-							<input type="text" class="form-control" ng-model="profile.firstname">
+							<input type="text" class="form-control letter-only" ng-model="profile.firstname">
 						</div>
 						<div class="form-group col-lg-12">
 							<label>Last Name</label>
-							<input type="text" class="form-control" ng-model="profile.lastname">
+							<input type="text" class="form-control letter-only" ng-model="profile.lastname">
 						</div>
 						<div class="form-group col-lg-12">
 							<label>Email</label>
@@ -66,13 +66,13 @@
 								</div>
 								<div class="form-group col-lg-8">
 									<label>Contact Number</label>
-									<input type="text" class="form-control" ng-model="profile.contact">
+									<input type="text" class="form-control number-only" ng-model="profile.contact">
 								</div>
 								<div class="form-group col-lg-12">
 									<label>Address</label>
 									<textarea rows="4" class="form-control" ng-model="profile.address"></textarea>
 								</div>
-								<div class="form-group col-lg-12">
+								<div class="form-group col-lg-12" style="display:none;">
 									<label>Note</label>
 									<textarea class="form-control" rows="6" ng-model="profile.note"></textarea>
 								</div>
@@ -90,7 +90,7 @@
 
 						<div class="form-group col-lg-12">
 							<label>Full Name</label>
-							<input type="text" class="form-control" ng-model="profile.ioe_name">
+							<input type="text" class="form-control  letter-only" ng-model="profile.ioe_name">
 						</div>
 						<div class="form-group col-lg-12">
 							<label>Relation</label>
@@ -102,9 +102,9 @@
 						</div>
 						<div class="form-group col-lg-12">
 							<label>Contact Number</label>
-							<input type="text" class="form-control" ng-model="profile.ioe_contact">
+							<input type="text" class="form-control number-only" ng-model="profile.ioe_contact">
 						</div>
-						<div class="form-group col-lg-12">
+						<div class="form-group col-lg-12" style="display:none;">
 							<label>Establishment</label>
 							<input type="text" id="ioe_establishment" name="ioe_establishment" class="form-control" ng-model="profile.ioe_establishment">
 						</div>
