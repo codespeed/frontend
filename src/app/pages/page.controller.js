@@ -26,17 +26,17 @@ export class PageController {
 		return decodeURIComponent(results[2].replace(/\+/g, " "));
 	}
 	postMessage(){
-		this.$http.post('http://localhost:5000/api/message',{msg: this.message ? this.message : ""});
+		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/message',{msg: this.message ? this.message : ""});
 	}
 	getMessages(){
 		var vm = this;
-		this.$http.get('http://localhost:5000/api/establishments').then(function(result){
+		this.$http.get('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/establishments').then(function(result){
 			vm.messages = result.data;
 		});
 	}
 	getEstablishment(){
 		var vm = this;
-		this.$http.get('http://localhost:5000/api/establishments').then(function(result){
+		this.$http.get('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/establishments').then(function(result){
 			vm.messages = result.data;
 		});
 	}
@@ -161,14 +161,14 @@ export class PageController {
 	postSubmitApplication(data){
 		var location = this.location;
 		var vm = this;
-		this.$http.post('http://localhost:5000/auth/register', data).success(function(){
+		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/auth/register', data).success(function(){
 			location.href = location.origin + "/#/registration-process"
 		}).error(function(err){
 			alert( err['message'] );
 		});
 	}
 	verify_account( code ){
-		this.$http.post('http://localhost:5000/auth/registration-confirmation',{code: code});
+		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/auth/registration-confirmation',{code: code});
 	}
 	validFields(){
 		var data = {

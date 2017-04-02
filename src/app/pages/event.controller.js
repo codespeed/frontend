@@ -24,14 +24,14 @@ export class EventController {
 	
 	getEvents(){
 		var vm = this;
-		this.$http.get('http://localhost:5000/events').then(function(result){
+		this.$http.get('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/events').then(function(result){
 			vm.events = result.data;
 		});
 	}
 
 	getEvent(slug){
 		var vm = this;
-		this.$http.get('http://localhost:5000/events/'+slug).then(function(result){
+		this.$http.get('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/events/'+slug).then(function(result){
 			vm.evnt = result.data;
 		});
 	}

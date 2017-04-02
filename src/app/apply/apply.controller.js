@@ -23,10 +23,10 @@ export class ApplyController {
 	getprofile(){
 		var vm = this;
 		var token = this.$auth.getToken();
-		vm.$http.post('http://localhost:5000/api/health-card-data',{token: token}).then(function(result){
+		vm.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/health-card-data',{token: token}).then(function(result){
 			var data = result.data;
 			if (!data) {
-				vm.$http.post('http://localhost:5000/api/profile',{token: token}).then(function(result){
+				vm.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/profile',{token: token}).then(function(result){
 					var data = result.data;
 					vm.displayProfle(data)
 				});
@@ -218,7 +218,7 @@ export class ApplyController {
 	}
 	postSubmitApplication(data, contact, token){
 		var location = this.location;
-		this.$http.post('http://localhost:5000/api/health-card-application', {data:data, contact:contact, token:token}).success(function(){
+		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/health-card-application', {data:data, contact:contact, token:token}).success(function(){
 			location.href = location.origin + "/#/apply-submitted"
 		}).error(function(err){
 			alert("Unable to Proceed. " + err);
@@ -226,7 +226,7 @@ export class ApplyController {
 	}
 	postUpdateApplication(data, contact, token){
 		var location = this.location;
-		this.$http.post('http://localhost:5000/api/health-card-application-update', {data:data, contact:contact, token:token}).success(function(){
+		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/health-card-application-update', {data:data, contact:contact, token:token}).success(function(){
 			location.href = location.origin + "/#/apply-updated"
 		}).error(function(err){
 			alert("Unable to Proceed. " + err);
@@ -246,7 +246,7 @@ export class ApplyController {
 			 	var location = this.location;
 			 	$('#resend-code').modal("hide");
 			 	location.href = location.origin + "/#/apply-resend";
-			 	this.$http.post('http://localhost:5000/api/health-card-resend', {cno:cno, verification_code:verification_code}).success(function(){
+			 	this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/health-card-resend', {cno:cno, verification_code:verification_code}).success(function(){
 					
 				}).error(function(err){
 					alert("Unable to Proceed. " + err);

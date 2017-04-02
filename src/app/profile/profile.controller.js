@@ -9,7 +9,7 @@ export class ProfileController {
 	getprofile(){
 		var vm = this;
 		var token = this.$auth.getToken();
-		this.$http.post('http://localhost:5000/api/profile',{token: token}).then(function(result){
+		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/profile',{token: token}).then(function(result){
 			var data = result.data;
 
 			vm.displayProfle(data)
@@ -66,7 +66,7 @@ export class ProfileController {
 	}
 	updateSubmitApplication(data){
 		var token = this.$auth.getToken();
-		this.$http.post('http://localhost:5000/api/profile-update', {data:data, token:token}).success(function(result){
+		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/profile-update', {data:data, token:token}).success(function(result){
 			alert(result.message)
 		}).error(function(){
 			alert("Unable to Proceed. ");
